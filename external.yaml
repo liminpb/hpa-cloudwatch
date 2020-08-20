@@ -1,0 +1,25 @@
+apiVersion: metrics.aws/v1alpha1
+kind: ExternalMetric
+metadata:
+  name: dz-collector-stag-cpu
+spec:
+  name: dz-collector-stag-cpu
+  resource:
+    resource: "deployment"
+  queries:
+    - id: dz_collector_stag_cpu
+      metricStat:
+        metric:
+          namespace: "Custom/ContainerInsights"
+          metricName: "pod_memory_utilization"
+          dimensions:
+            - name: PodName
+              value: dz-collector-service
+            - name:  ClusterName
+              value: dzstaging.k8s.local
+            - name: Namespace
+              value: dz-staging
+        period: 300
+        stat: Average
+        unit: Count
+      returnData: true
