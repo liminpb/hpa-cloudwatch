@@ -1,29 +1,29 @@
-#HPA using Cloudwatch Metrics.
+# HPA using Cloudwatch Metrics.
 
-**What is HPA ? 
+**What is HPA ?** 
 
 HPA is Horizontal Pod Autoscaler, It is used to auto scale up and down number of kubernetes pods based on observed CPU utilization or any other Custom metrics. So basically the HPA will help us auto scale our pods as per the observed resource from a particular metric we are using in our cluster. 
 
-**What is Cloudwatch ?
+**What is Cloudwatch ?** 
 
 Amazon CloudWatch is a monitoring and observability service built for DevOps engineers, developers, site reliability engineers (SREs), and IT managers. CloudWatch collects monitoring and operational data in the form of logs, metrics, and events, providing you with a unified view of AWS resources, applications, and services that run on AWS and on-premises servers.
 
-**Why are we using the Cloudwatch metric for HPA ? 
+**Why are we using the Cloudwatch metric for HPA ?**  
 
 Cloudwatch is an effective monitoring tool. Majority of the KOPS using customers might be using the cloud as AWS, so probably most of our metric and log collection should happen through Cloudwatch. HPA using cloudwatch will be effective in that way to auto scale our applications pods, as the developers might be more confident in creating Custom metrics for CloudWatch. 
 
 Cool !!!  How can we go ahead with this HPA setup ?
 
-**What we need to proceed.
+**What we need to proceed.** 
 
- *Working KOPS cluster.
- *A custom cloudwatch metric to test. 
- *Kubernetes Custom Metrics API and External Metrics API for AWS CloudWatch metrics.
- *
+ * Working KOPS cluster.
+ * A custom cloudwatch metric to test. 
+ * Kubernetes Custom Metrics API and External Metrics API for AWS CloudWatch metrics.
+ 
 
 
 
-**Step by step procedure. 
+**Step by step procedure.**  
 
 1. Create a IAM policy with following policy templete and attach the same to node and worker roles of cluster.
 
