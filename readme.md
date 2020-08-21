@@ -27,7 +27,8 @@ Cool !!!  How can we go ahead with this HPA setup ?
 
 1. Create a IAM policy with following policy templete and attach the same to node and worker roles of cluster.
 
-++++++++++++++++++++++++++++++++++++++++++++
+```
+
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -41,12 +42,14 @@ Cool !!!  How can we go ahead with this HPA setup ?
     ]
 }    
 
+```
 
-+++++++++++++++++++++++++++++++++++++++++++++++
+
 
 Make sure you use service account creation as below in adapter.yaml.
 
-++++++++++++++++++
+```
+
 kind: ServiceAccount
   apiVersion: v1
   metadata:
@@ -54,7 +57,9 @@ kind: ServiceAccount
       eks.amazonaws.com/role-arn: arn:aws:iam::awsaccountID:role/policyname
     name: k8s-cloudwatch-adapter
     namespace: custom-metrics
-++++++++++++++++++
+
+```
+
 
 
 2. Integrate the Cloudwatch adapter. 
@@ -68,7 +73,8 @@ This creates a new namespace custom-metrics and deploys the necessary ClusterRol
 
     kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1" | jq .
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+```
+
 {
   "kind": "APIResourceList",
   "apiVersion": "v1",
@@ -76,7 +82,9 @@ This creates a new namespace custom-metrics and deploys the necessary ClusterRol
   "resources": [
   ]
 }
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+```
+
 
 If the result is like above, then adapter installation is fine. 
 
