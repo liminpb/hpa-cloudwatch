@@ -10,7 +10,7 @@ spec:
     - id: dz_collector_stag_cpu
       metricStat:
         metric:
-          namespace: "Custom/ContainerInsights"
+          namespace: "ContainerInsights"
           metricName: "pod_memory_utilization"
           dimensions:
             - name: PodName
@@ -19,7 +19,7 @@ spec:
               value: dzstaging.k8s.local
             - name: Namespace
               value: dz-staging
-        period: 300
-        stat: Average
-        unit: Count
+        period: 10
+        stat: Sum
+        unit: Percent
       returnData: true

@@ -4,13 +4,13 @@ metadata:
   name: dz-collector-stag-cpu-hpa
 spec:
   scaleTargetRef:
-    apiVersion: extensions/v1beta1
+    apiVersion: apps/v1beta1
     kind: Deployment
     name: dz-collector-service
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 3
   metrics:
   - type: External
     external:
       metricName: dz-collector-stag-cpu
-      targetValue: 5
+      targetValue: 70
